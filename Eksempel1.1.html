@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksemplel 1</title>
+    <title>Eksemplel 1.1</title>
     <link rel="stylesheet" href="Eksempel1_style.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
     <button onclick="gridLayout()">Grid layout</button>
 
     <h1>Eksempel 1</h1>
-    <div class="container">
+    <div id="container">
 
         <div id="card 1" class="card 1">
             <div onclick="expandV()" class="header green">Verketøy</div>
@@ -25,7 +28,6 @@
         <div id="card 0" class="card 0">
             <div onclick="expandHTML()" class="header blue">HTML</div>
         </div>
-        
         
         <div id="card 2" class="card 2">
             <div onclick="expandCSS()" class="header red">CSS</div>
@@ -38,80 +40,75 @@
         <div id="card 4" class="card 4">
             <div onclick="expandB()" class="header grey">Hode, kropp og ben</div>
         </div>
-        </div>
+    </div>
     <script>
+        
+
+
+
+        function replaceHead(prevHead, currentHead, nextHead){   
+            document.getElementById("head").innerHTML = /*HTML*/`
+            <button onclick= head${prevHead}()>◀</button>
+                <img src="img/head${currentHead}.png" alt="">
+            <button onclick= head${nextHead}()>▶</button>`
+            }
+
         function head1(){
-            document.getElementById("head").innerHTML=/*HTML*/`
-            <button onclick="head4()">◀</button>
-            <img src="img/head1.png" alt="">
-            <button onclick="head2()">▶</button>`
+            replaceHead(4, 1, 2)
         }
+
         function head2(){
-            document.getElementById("head").innerHTML=/*HTML*/`
-            <button onclick="head1()">◀</button>
-            <img src="img/head2.png" alt="">
-            <button onclick="head3()">▶</button>`
+            replaceHead(1, 2, 3)
         }
         function head3(){
-            document.getElementById("head").innerHTML=/*HTML*/`
-            <button onclick="head1()">◀</button>
-            <img src="img/head3.png" alt="">
-            <button onclick="head4()">▶</button>`
+            replaceHead(2, 3, 4)
         }
         function head4(){
-            document.getElementById("head").innerHTML=/*HTML*/`
-            <button onclick="head3()">◀</button>
-            <img src="img/head4.png" alt="">
-            <button onclick="head1()">▶</button>`
+            replaceHead(3, 4, 1)
         }
+
+         function replaceBody(prevBody, currentBody, nextBody){   
+            document.getElementById("body").innerHTML = /*HTML*/`
+            <button onclick= body${prevBody}()>◀</button>
+                <img src="img/body${currentBody}.png" alt="">
+            <button onclick= body${nextBody}()>▶</button>`
+            }
+
         function body1(){
-            document.getElementById("body").innerHTML=/*HTML*/`
-            <button onclick="body4()">◀</button>
-            <img src="img/body1.png" alt="">
-                <button onclick="body2()">▶</button>`
-}
-function body2(){
-    document.getElementById("body").innerHTML=/*HTML*/`
-                <button onclick="body1()">◀</button>
-                <img src="img/body2.png" alt="">
-                <button onclick="body3()">▶</button>`
-}
-function body3(){
-    document.getElementById("body").innerHTML=/*HTML*/`
-                <button onclick="body2()">◀</button>
-                <img src="img/body3.png" alt="">
-                <button onclick="body4()">▶</button>`
-}
-function body4(){
-    document.getElementById("body").innerHTML=/*HTML*/`
-                <button onclick="body3()">◀</button>
-                <img src="img/body4.png" alt="">
-                <button onclick="body1()">▶</button>`
-}
-function legs1(){
-    document.getElementById("legs").innerHTML=/*HTML*/`
-                <button onclick="legs4()">◀</button>
-                <img src="img/legs1.png" alt="">
-                <button onclick="legs2()">▶</button>`
-}
-function legs2(){
-    document.getElementById("legs").innerHTML=/*HTML*/`
-                <button onclick="legs1()">◀</button>
-                <img src="img/legs2.png" alt="">
-                <button onclick="legs3()">▶</button>`
-}
-function legs3(){
-    document.getElementById("legs").innerHTML=/*HTML*/`
-                <button onclick="legs2()">◀</button>
-                <img src="img/legs3.png" alt="">
-                <button onclick="legs4()">▶</button>`
-}
-function legs4(){
-    document.getElementById("legs").innerHTML=/*HTML*/`
-                <button onclick="legs3()">◀</button>
-                <img src="img/legs4.png" alt="">
-                <button onclick="legs1()">▶</button>`
-}
+            replaceBody(4, 1, 2)
+        }
+
+        function body2(){
+            replaceBody(1, 2, 3)
+        }
+        function body3(){
+            replaceBody(2, 3, 4)
+        }
+        function body4(){
+            replaceBody(3, 4, 1)
+        }
+
+        function replaceLegs(prevLegs, currentLegs, nextLegs){   
+            document.getElementById("legs").innerHTML = /*HTML*/`
+            <button onclick= legs${prevLegs}()>◀</button>
+                <img src="img/legs${currentLegs}.png" alt="">
+            <button onclick= legs${nextLegs}()>▶</button>`
+            }
+
+        function legs1(){
+            replaceLegs(4, 1, 2)
+        }
+
+        function legs2(){
+            replaceLegs(1, 2, 3)
+        }
+        function legs3(){
+            replaceLegs(2, 3, 4)
+        }
+        function legs4(){
+            replaceLegs(3, 4, 1)
+        }
+
 function expandV(){
     document.getElementById("card 1").innerHTML=/*HTML*/`
     <div onclick="closeV()" class="header green">Verketøy</div>
@@ -180,7 +177,7 @@ function expandJS(){
                     </ul>
                 </div>`
 }
-function closeJS(){
+    function closeJS(){
     document.getElementById("card 3").innerHTML=/*HTML*/`
     <div onclick="expandJS()" class="header yellow">JavaScript</div>`
 }
@@ -188,22 +185,19 @@ function expandB(){
     document.getElementById("card 4").innerHTML=/*HTML*/`
     <div onclick="closeB()" class="header grey">Hode, kropp og ben</div>
     <div class="innerCard">
-            <div id="head">
-                <button onclick="head4()">◀</button>
-                <img src="img/head1.png" alt="">
-                <button onclick="head2()">▶</button>
+        <div id="head">
+
             </div>
             <div id="body">
-                <button onclick="body4()">◀</button>
-                <img src="img/body1.png" alt="">
-                <button onclick="body2()">▶</button>
+
             </div>
             <div id="legs">
-                <button onclick="legs4()">◀</button>
-                <img src="img/legs1.png" alt="">
-                <button onclick="legs2()">▶</button>
+
             </div>
         </div>`
+        head1()
+        body1()
+        legs1()
 }
 function closeB(){
     document.getElementById("card 4").innerHTML=/*HTML*/`
@@ -234,43 +228,20 @@ function closeHTML(){
 }
 
 function ingenLayout(){
-    document.getElementById("Mhead").innerHTML=/*HTML*/`
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksemplel 1</title>
-    <link rel="stylesheet" href="Eksempel1_style.css">
-    `}
+    document.getElementById("container").classList = [];
+    }
 function vertikalLayout(){
-    document.getElementById("Mhead").innerHTML=/*HTML*/`
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksemplel 1</title>
-    <link rel="stylesheet" href="Eksempel1_style.css">
-    <link rel="stylesheet" href="Vertikal_layout.css">
-    `}
+    document.getElementById("container").classList = [];
+    document.getElementById("container").classList.add("vertikalLayout");
+    }
 function horisonalLayout(){
-    document.getElementById("Mhead").innerHTML=/*HTML*/`
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksemplel 1</title>
-    <link rel="stylesheet" href="Eksempel1_style.css">
-    <link rel="stylesheet" href="Horizonal_layout.css">
-    `}
+    document.getElementById("container").classList = [];
+    document.getElementById("container").classList.add("horisonalLayout");
+}
 function gridLayout(){
-    document.getElementById("Mhead").innerHTML=/*HTML*/`
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eksemplel 1</title>
-    <link rel="stylesheet" href="Eksempel1_style.css">
-    <link rel="stylesheet" href="Grid_layout.css">`
+    document.getElementById("container").classList = [];
+    document.getElementById("container").classList.add("gridLayout");
 }
 </script>
-
-
 </body>
-
 </html>
