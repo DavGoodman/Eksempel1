@@ -1,0 +1,64 @@
+body {
+    margin: 20px;
+}
+
+.card {
+    width: 600px;
+    background-color: lightgrey;
+    border: 1px solid darkgrey;
+    margin: 10px;
+   
+}
+
+.innerCard {
+    padding: 10px;
+}
+
+.header {
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    padding: 1% 0;
+    border: 1px solid gray;
+    user-select: none;
+}
+
+.green {
+    background-color: green;
+    grid-area: tl;
+}
+
+.blue {
+    background-color: blue;
+    grid-area: tr;
+}
+
+.red {
+    background-color: red;
+    grid-area: cl;
+}
+
+.yellow {
+    background-color: yellow;
+    grid-area: cr;
+}
+
+.grey {
+    background-color: darkgrey;
+    grid-area: bl;
+}
+
+.vertikalLayout {
+    display: flex;
+    flex-direction: column;
+}
+.horisonalLayout {
+    display: flex;
+}
+.gridLayout {
+    display: grid;
+    grid-template-areas:
+    "tl tr"
+    "cl cr"
+    "bl .";
+}
